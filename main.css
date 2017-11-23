@@ -21,22 +21,47 @@ a:hover {
   text-decoration: underline;
 }
 
+section {
+  font-size: 1rem;
+}
+
 header, section, footer {
-  width: 40rem;
+  width: 50rem;
   margin: 0 auto;
 }
 
 header {
-  margin: 3rem auto;
+  margin: 4rem auto;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 1em 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1em 0;
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+
+p, pre, div.references, div.snapshot {
+  margin-top: 1.5rem;
 }
 
 .snapshot {
-  border: 1px solid rgba(255, 255, 255, .15);
-  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(249, 38, 114, .3);
+  background: rgba(249, 38, 114, .2);
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.references {
+  border: 1px solid rgba(174, 129, 255, .3);
+  background: rgba(174, 129, 255, .2);
   padding: 1em;
   border-radius: 1em;
 }
