@@ -59,6 +59,13 @@ p, pre, div.references, div.snapshot {
   border-radius: 1em;
 }
 
+.experiments {
+  border: 1px solid rgba(230, 219, 116, .3);
+  background: rgba(230, 219, 116, .2);
+  padding: 1em;
+  border-radius: 1em;
+}
+
 .references {
   border: 1px solid rgba(174, 129, 255, .3);
   background: rgba(174, 129, 255, .2);

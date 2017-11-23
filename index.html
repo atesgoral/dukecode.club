@@ -16,7 +16,31 @@
   <h2>Week 3 - Nov 23, 2017</h2>
   <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/82/">https://jsfiddle.net/x75ut61o/82/</a></p>
   <p>We'll learn about the <code>for</code> loop!</p>
-  <div class="references">
+  <p>The <code>for</code> statement allows us to perform repetitive tasks by just writing code for a single step of the task, instead of typing lots and lots of code.</p>
+  <p>The syntax might initially look ugly, but you'll get used to it over time. Here's a <code>for</code> loop setup that draws 10 squares in a diagonal pattern:</p>
+  <pre><code class="js">var ctx = c.getContext('2d')
+
+for (var i = 0; i < 10; i++) {
+  ctx.fillRect(i * 10, i * 10, 10, 10)
+}</code></pre>
+  <p>To put what we're doing above in English:</p>
+  <p>First define a new variable called <code>i</code> and set its initial value to 0 (<code>var i = 0</code>). And while <code>i</code> is less than 10 (<code>i < 10</code>), do what's inside this block (the part between the <code>{</code> and <code>}</code>) and then increment <code>i</code> by 1 (<code>i++</code>).</p>
+  <p>What we're doing inside the block is drawing a square like we did before, but instead of using fixed values for the x and y coordinates, we're making x and y based on value of <code>i</code>.</p>
+  <p>The loop starts with <code>i</code> set to 0. We compute both x and y as <code>i * 10</code>. So, on our first iteration, when <code>i</code> is 0, both x and y are 0. Remember, anything multipled by 0 is 0!</p>
+  <p>On the second iteration, since we've incremented <code>i</code> by 1, the value of <code>i</code> is now 1. So both x and y are now 10.</p>
+  <p>And so on...</p>
+  <p>Until we hit the terminating/edge condition. This is when the value of <code>i</code> no longer satisfies "while <code>i</code> is less than 10". 9 is the last valid value for <code>i</code> that satisfies that condition. And when <code>i</code> hits the value of 10, we break out of the loop.</p>
+  <p>So, the values that <code>i</code> in this example are: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. The loop runs exactly 10 times.</p>
+  <div class="experiments">
+      Feel free to experiment:
+      <ul>
+        <li>Use different values instead of 10 to change the loop count. But, don't go too crazy (millions, billions) or you'll freeze the browser!</li>
+        <li>Change the multipliers (<code>* 10</code>) you use.</li>
+        <li>Use <code>i</code> in the width and height values.</li>
+        <li>Use more interesting operations than just multiplication.</li>
+      </ul>
+  </div>
+    <div class="references">
     References for the curious mind:
     <ul>
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for"><code>for</code></a></li>
@@ -39,7 +63,15 @@ ctx.fillRect(20, 0, 10, 10)
 
 ctx.fillStyle = 'blue'
 ctx.fillRect(0, 20, 30, 10)</code></pre>
-  <div class="references">
+<div class="experiments">
+    Feel free to experiment:
+    <ul>
+      <li>Use different colour values. Can you guess some colour names?</li>
+      <li>Where can you find all the colour names you can use?</li>
+      <li>Add more shapes with different colours to draw something.</li>
+    </ul>
+</div>
+<div class="references">
     References for the curious mind:
     <ul>
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle"><code>fillStyle</code></a></li>
@@ -53,7 +85,7 @@ ctx.fillRect(0, 20, 30, 10)</code></pre>
   <h2>Week 1 - Nov 2, 2017</h2>
   <p>Let's learn how to draw a simple square (or rectangle) using HTML and JavaScript, from scratch!</p>
   <p>
-    Go to <a href="https://jsfiddle.net">jsFiddle</a> and enter the following in the HTML panel:
+    Go to <a href="https://jsfiddle.net">JSFiddle</a> and enter the following in the HTML panel:
   </p>
   <pre><code class="html">&lt;canvas id="c"&gt;&lt;/canvas&gt;</code></pre>
   <p>And in the JavaScript panel, enter the following:</p>
@@ -67,6 +99,12 @@ ctx.fillRect(0, 0, 10, 10)</code></pre>
     This is a lazy way of doing this quickly, and not a best practice, but it will do for now.</p>
   <p>Then we get the 2D (two-dimensional) drawing context from the canvas element and store that in a new variable called <code>ctx</code>.</p>
   <p>Then we call the <code>fillRect()</code> method on the context to draw a rectangle. The arguments to the method are: x coordinate, y coordinate, width, height. In our case, we're drawing the rectangle at the top left corner of the canvas. It's 10 pixels by pixels, which make it a square.</p>
+  <div class="experiments">
+      Feel free to experiment:
+      <ul>
+        <li>Use different values for x, y, width and height.</li>
+      </ul>
+  </div>
   <div class="references">
     References for the curious mind:
     <ul>
