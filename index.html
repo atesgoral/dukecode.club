@@ -3,6 +3,9 @@
 <head>
   <meta enctype="UTF-8">
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <header>
@@ -11,16 +14,66 @@
 
 <section>
   <h2>Week 3 - Nov 23, 2017</h2>
+  <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/82/">https://jsfiddle.net/x75ut61o/82/</a></p>
+  <p>We'll learn about the <code>for</code> loop!</p>
+  <p class="references">
+    References for the curious mind:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for"><code>for</code></a></li>
+    </ul>
+  </p>
 </section>
 
 <section>
   <h2>Week 2 - Nov 9, 2017</h2>
-  <p>Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/82/">https://jsfiddle.net/x75ut61o/82/</a></p>
+  <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/">https://jsfiddle.net/x75ut61o/</a></p>
+  <p>We'll experiment with drawing different rectangles in different colours!</p>
+  <p>The <code>fillStyle</code> property of the context object lets you change the fill color <em>before</em> filling a rectangle. It's like picking up a different crayon before painting a new rectangle.</p>
+  <p>Copy and paste (or manually type from scratch) the <code>fillRect</code> line from last week to draw as many different rectangles at different positions and dimensions as you like. Set <code>fillStyle</code> to change the fill colour!</p>
+  <pre><code class="js">var ctx = c.getContext('2d')
+
+ctx.fillRect(0, 0, 10, 10)
+
+ctx.fillStyle = 'red'
+ctx.fillRect(20, 0, 10, 10)
+
+ctx.fillStyle = 'blue'
+ctx.fillRect(0, 20, 30, 10)</code></pre>
+  <p class="references">
+    References for the curious mind:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle"><code>fillStyle</code></a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">Valid color values</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Web_colors">Web colors</a></li>
+    </ul>
+  </p>
 </section>
 
 <section>
   <h2>Week 1 - Nov 2, 2017</h2>
-  <p>Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/">https://jsfiddle.net/x75ut61o/</a></p>
+  <p>Let's learn how to draw a simple square (or rectangle) using HTML and JavaScript, from scratch!</p>
+  <p>
+    Go to <a href="https://jsfiddle.net">jsFiddle</a> and enter the following in the HTML panel:
+  </p>
+  <pre><code class="html">&lt;canvas id="c"&gt;&lt;/canvas&gt;</code></pre>
+  <p>And in the JavaScript panel, enter the following:</p>
+  <pre><code class="js">var ctx = c.getContext('2d')
+
+ctx.fillRect(0, 0, 10, 10)</code></pre>
+  <p>After hitting <strong>Run</strong> you should see a black square in the output panel.</p>
+  <p>We've created a canvas element, assigned it an id (identifier) of "c".
+    The HTML we have is not a full-fledged, valid HTML, but it will do for now.</p>
+  <p>We automatically get a <em>global</em> variable (more on that later) called <code>c</code> in JavaScript, which refers to our canvas element.
+    This is a lazy way of doing this quickly, and not a best practice, but it will do for now.</p>
+  <p>Then we get the 2D (two-dimensional) drawing context from the canvas element and store that in a new variable called <code>ctx</code>.</p>
+  <p>Then we call the <code>fillRect()</code> method on the context to draw a rectangle. The arguments to the method are: x coordinate, y coordinate, width, height. In our case, we're drawing the rectangle at the top left corner of the canvas. It's 10 pixels by pixels, which make it a square.</p>
+  <p class="references">
+    References for the curious mind:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext"><code>getContext()</code></a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect"><code>fillRect()</code></a></li>
+    </ul>
+  </p>
 </section>
 
 </body>

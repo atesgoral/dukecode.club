@@ -4,7 +4,7 @@ body {
   font-family: arial, sans-serif;
   font-size: 100%;
   background: rgb(20, 25, 19);
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .66);
 }
 
 h1, h2 {
@@ -22,6 +22,21 @@ a:hover {
 }
 
 header, section, footer {
-  width: 1000px;
+  width: 40rem;
   margin: 0 auto;
+}
+
+header {
+  margin: 3rem auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.snapshot {
+  border: 1px solid rgba(255, 255, 255, .15);
+  background: rgba(255, 255, 255, .1);
+  padding: 1em;
+  border-radius: 1em;
 }
