@@ -13,6 +13,68 @@
 </header>
 
 <section>
+  <h2>Week 4 - Nov 30, 2017</h2>
+  <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/112/">https://jsfiddle.net/x75ut61o/112/</a></p>
+  <p>We'll learn how to write our own functions.</p>
+  <p>One of the uses of functions is to allow us to group a set of operations (or a single, complex operation) so that the entire group of actions can be performed with just a single call to a function.</p>
+  <p>Take as an example how we draw a square: <code>ctx.fillRect(x, y, width, height)</code>. We could create a function to draw a square at a given (x, y) coordinate and size:</p>
+  <pre><code class="js">function drawSquare(x, y, size) {
+  ctx.fillRect(x, y, size, size)
+}</code></pre>
+  <p>This both reduced the number of arguments we have to use each time we have to draw a square (as opposed to repeating the same size for both the width and the height) and also communicates our intent better (i.e. "draw a square").</p>
+  <p>Change the entire code to look like this:</p>
+  <pre><code class="js">var ctx = c.getContext('2d')
+
+function drawSquare(x, y, size) {
+  ctx.fillRect(x, y, size, size)
+}
+
+for (var i = 0; i < 10; i++) {
+  drawSquare(i * 10, i * 10, 10)
+}</code></pre>
+  <p>Functions will start getting more meaningful when we start doing more than just a single operation. Now, let's also specify the colour of the square by adding a color argument:</p>
+<pre><code class="js">function drawSquare(x, y, size, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, size, size)
+}</code></pre>
+  <p>You can now call this function to draw a square with any colour: <code>drawSquare(10, 10, 20, 'red')</code>.</p>
+  <p>Now, let's define a new function that allows us to define any colour we want, using hue, saturation and lightness (or luminosity)!</p>
+<pre><code class="js">function hsl(hue, saturation, lightness) {
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}</code></pre>
+  <p>Now, change the entire code to look like this:</p>
+  <pre><code class="js">var ctx = c.getContext('2d')
+
+function drawSquare(x, y, size, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, size, size)
+}
+
+function hsl(hue, saturation, lightness) {
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+for (var i = 0; i < 10; i++) {
+  drawSquare(i * 10, i * 10, 10, hsl(i * 36, 100, 50))
+}</code></pre>
+  <div class="experiments">
+    Feel free to experiment:
+    <ul>
+      <li>Use different staturation and lightness values.</li>
+      <li>Make saturation and lightness dependent on <code>i</code> as well.</li>
+      <li>Hue is an angle between 0-360. What happens when you beyond 360? Can you guess?</li>
+    </ul>
+  </div>
+  <div class="references">
+    References for the curious mind:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">Functions</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSL and HSV</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
   <h2>Week 3 - Nov 23, 2017</h2>
   <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/82/">https://jsfiddle.net/x75ut61o/82/</a></p>
   <p>We'll learn about the <code>for</code> loop!</p>
