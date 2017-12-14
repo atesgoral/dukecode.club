@@ -62,7 +62,7 @@ function handleMouseUp(event) {
 
 c.addEventListener('mousedown', handleMouseDown)
 c.addEventListener('mouseup', handleMouseUp)</code></pre>
-  <p>And let's change our <code>mousemove</code> handler to check the value of <code>isMouseDown</code> and only draw is the mouse is down:</p>
+  <p>And let's change our <code>mousemove</code> handler to check the value of <code>isMouseDown</code> and only draw if the mouse button is down:</p>
   <pre><code class="js">function handleMouseMove(event) {
   if (isMouseDown) {
     drawSquare(event.clientX - 5, event.clientY - 5, 10, hsl(220, 100, 50))
