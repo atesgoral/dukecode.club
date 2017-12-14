@@ -13,6 +13,82 @@
 </header>
 
 <section>
+  <h2>Week 5 - Dec 14, 2017</h2>
+  <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/126/">https://jsfiddle.net/x75ut61o/126/</a></p>
+  <p>We'll add some mouse interactivity! We'll cover a lot of ground this week, so use your time wisely!</p>
+  <p>But, first let's give overselves a headstart and use some CSS (Cascading Style Sheets) + additional JavaScript to extend the canvas to fit the entire panel.</p>
+  <p class="snapshot">Start with this fiddle: <a href="https://jsfiddle.net/x75ut61o/127/">https://jsfiddle.net/x75ut61o/127/</a></p>
+  <p>CSS allows us to style HTML elements. This includes setting the dimensions of rectangular elements like the page body or a canvas element. Don't worry about CSS for now! But notice what we've added to grow our canvas to git the panel (or screen):</p>
+  <p>The CSS:</p>
+  <pre><code class="css">body, html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+#c {
+  width: 100%;
+  height: 100%;
+}</code></pre>
+  <p>The JavaScript:</p>
+  <pre><code class="js">c.width = c.offsetWidth;
+c.height = c.offsetHeight;</code></pre>
+  <p>Now that we have more space to play around with, let's respond to mouse movements!</p>
+  <p>HTML elements "emit events" in response to user input like key presses, mouse movements, or mouse clicks. You can attach one or more event handlers to any HTML element you want.</p>
+  <p>The event we'll look at now is the <code>mousemove</code> event which gets emitted by an HTML element when you move your mouse over it.</p>
+  <p>First, remove the <code>for</code> loop that draws the diagonally arranged squares.</p>
+  <p>Now, let's create a new function to handle the event and attach this function as an event handler on our canvas element:</p>
+  <pre><code class="js">function handleMouseMove(event) {
+  drawSquare(event.clientX - 5, event.clientY - 5, 10, hsl(220, 100, 50))
+}
+
+c.addEventListener('mousemove', handleMouseMove)</code></pre>
+  <p>What if we wanted to make this work like a drawing application where you have to hold the mouse button down to draw?</p>
+  <p>Two additional events that are interest to use are <code>mousedown</code> and <code>mouseup</code>.</p>
+  <p><code>mousedown</code> gets emitted the moment you press a mouse button. No other mouse button events are emitted while you're still holding the mouse button down.</p>
+  <p><code>mouseup</code> gets emitted the moment you let go of the mouse button that you've been pressing.</p>
+  <p>We need to track the state of the mouse button (let's only worry about the left mouse button for now). We need to know if it's being held down.</p>
+  <p>We can store the state of the mouse button in a new variable. Let's call it <code>isMouseDown</code>. When we run our program, since the mouse button will be intially "up", we can set the initial value of this variable to <code>false</code>:</p>
+  <pre><code class="js">var isMouseDown = false;</code></pre>
+  <p>Then let's add two new event handlers to toggle the value of this variable between <code>true</code> and <code>false</code>:</p>
+  <pre><code class="js">function handleMouseDown(event) {
+  isMouseDown = true;
+}
+
+function handleMouseUp(event) {
+  isMouseDown = false;
+}
+
+c.addEventListener('mousedown', handleMouseDown)
+c.addEventListener('mouseup', handleMouseUp)</code></pre>
+  <p>And let's change our <code>mousemove</code> handler to check the value of <code>isMouseDown</code> and only draw is the mouse is down:</p>
+  <pre><code class="js">function handleMouseMove(event) {
+  if (isMouseDown) {
+    drawSquare(event.clientX - 5, event.clientY - 5, 10, hsl(220, 100, 50))
+  }
+}</code></pre>
+  <p>The code block inside the <code>if</code> statement will only get executed if the condition (the part inside the parenthesis) is satisfied. This will get more evident after we start using a variety of <code>if</code> statements.</p>
+  <div class="experiments">
+    Feel free to experiment:
+    <ul>
+      <li>Change the size of the square based on the mouse coordinates or mouse button state.</li>
+      <li>Make saturation and lightness dependent on the mouse coordinates or mouse button state.</li>
+    </ul>
+  </div>
+  <div class="references">
+    References for the curious mind:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else">if</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/mousedown">mousedown</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/mouseup">mouseup</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/mousemove">mousemove</a></li>
+    </ul>
+  </div>
+  <p class="snapshot">Here's where we've gotten: <a href="https://jsfiddle.net/x75ut61o/129/">https://jsfiddle.net/x75ut61o/129/</a></p>
+</section>
+
+<section>
   <h2>Week 4 - Nov 30, 2017</h2>
   <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/112/">https://jsfiddle.net/x75ut61o/112/</a></p>
   <p>We'll learn how to write our own functions.</p>
