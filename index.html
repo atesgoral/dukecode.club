@@ -37,7 +37,7 @@ function handleMouseMove(event) {
   <p>You can actually delete the commented-out bits of code. We'll never use them again. I just wanted to show you how you can comment out code.</p>
   <p>Now, we're storing the latest known coordinates of the mouse in the <code>mouseX</code> and <code>mouseY</code> variables.</p>
   <p>Let's add another utility function. We've drawing squares. Let's draw circles this week! Drawing a circle is actually a multi-step process and you'll appreciate hiding all those steps inside a single function. Add this:</p>
-  <pre><code class="js"></code>function drawCircle(x, y, radius, color) {
+  <pre><code class="js">function drawCircle(x, y, radius, color) {
   ctx.fillStyle = color;
   ctx.beginPath();
   ctx.arc(x, y, radius, 0, Math.PI * 2);
