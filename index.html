@@ -13,6 +13,101 @@
 </header>
 
 <section>
+  <h2>Week 6 - Dec 21, 2017</h2>
+  <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/154/">https://jsfiddle.net/x75ut61o/154/</a></p>
+  <p>There's going to be so much stuff this week! Put on your seatbelts.</p>
+  <p>So far we've been just drawing static images. Let's start a bit of animation. We'll draw animation frames using the <code>requestAnimationFrame</code> method. This method tells the browser to call your frame drawing function when the browser is ready to draw, typically 60 frames per second.</p>
+  <p>First, some preperation. Instead of deleting code, you can "comment out" (or stash away) bits of your code. One way to do this in JavaScript is to add two forward slashes (<code>//</code>) to the left of the bits of code you want to comment out. Now go ahead and comment out the entire contents of our <code>handleMouseMove</code> function:</p>
+  <pre><code class="js">function handleMouseMove(event) {
+  //if (isMouseDown) {
+    //drawSquare(event.clientX - 5, event.clientY - 5, 10, hsl(220, 100, 50));
+  //}
+}</code></pre>
+  <p>So, we've stopped drawing a square immediately when the mouse moves. We'll store the mouse coordinates in two new variables and later use them in our animation. Add the following bits of code and also modify <code>handleMouseMove</code> to look like this:</p>
+  <pre><code class="js">var mouseX = 0;
+var mouseY = 0;
+
+function handleMouseMove(event) {
+	mouseX = event.clientX;
+  mouseY = event.clientY;
+  //if (isMouseDown) {
+    //drawSquare(event.clientX - 5, event.clientY - 5, 10, hsl(220, 100, 50));
+  //}
+}</code></pre>
+  <p>You can actually delete the commented-out bits of code. We'll never use them again. I just wanted to show you how you can comment out code.</p>
+  <p>Now, we're storing the latest known coordinates of the mouse in the <code>mouseX</code> and <code>mouseY</code> variables.</p>
+  <p>Let's add another utility function. We've drawing squares. Let's draw circles this week! Drawing a circle is actually a multi-step process and you'll appreciate hiding all those steps inside a single function. Add this:</p>
+  <pre><code class="js"></code>function drawCircle(x, y, radius, color) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.fill();
+}</code></pre>
+  <p>Try it if you like!</p>
+  <p>Now, we'll create a paint function and start using it for animation rendering. This part might look a bit tricky:</p>
+  <pre><code class="js">function paint(t) {
+  requestAnimationFrame(paint);
+
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, c.width, c.height);
+
+  drawCircle(mouseX, mouseY, 10, 'white');
+}
+
+requestAnimationFrame(paint);</code></pre>
+  <p>Every frame, our paint function fills the entire canvas in black (erases the frame) and then draws a white circle at the last known coordinates of the mouse.</p>
+  <p>Let's get a bit fancier. Here's a quick trick to make the white circle leave a trail behind. Instead of painting the canvas with a solid black, we'll fill it with a translucent black so that what's behind will show through and successive applications of the same translucent black will eventually turn older trails entirely black. This will make more sense when we see it in action. Change the <code>paint</code> function by adding the two <code>globalAlpha</code> lines to look like:</p>
+  <pre><code class="js">function paint(t) {
+  requestAnimationFrame(paint);
+
+  ctx.globalAlpha = 0.1; // 10% opacity (very translucent!)
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.globalAlpha = 1; // change back to fully opaque
+
+  drawCircle(mouseX, mouseY, 10, 'white');
+}
+
+requestAnimationFrame(paint);</code></pre>
+  <p>How about incorporating the mouse button into the mix? And some colours? I'll skip to the end without explaining every step of the way:</p>
+  <pre><code class="js">function paint(t) {
+  requestAnimationFrame(paint);
+
+  ctx.fillStyle = 'black';
+  ctx.globalAlpha = 0.1;
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.globalAlpha = 1;
+
+  if (isMouseDown) {
+    drawCircle(mouseX, mouseY, 10, hsl(t % 360, 100, 50));
+    drawCircle(c.width - mouseX, c.height - mouseY, 10, hsl(t % 360, 100, 50));
+  } else {
+    drawCircle(mouseX, mouseY, 10, 'white');
+  }
+}
+
+requestAnimationFrame(paint);</code></pre>
+  <p>I'll let you ponder about what's we've just added. But I'll explain what that <code>t</code> argument that our paint function receives. It's the time since the animation started (the first call to <code>requestAnimationFrame</code>. It keeps increasing at each frame. We can use the value of <code>t</code> to do time-based things in our animation. In our case, we're cycling the hue of the circle based on time.</p>
+  <div class="experiments">
+    Feel free to experiment:
+    <ul>
+      <li>Can you add more circles, using different cominations of <code>mouseX</code>, <code>mouseY</code>, <code>c.width</code> and <code>c.height</code> to create a <a href="https://en.wikipedia.org/wiki/Kaleidoscope">kaleidoscope</a>?</li>
+    </ul>
+  </div>
+  <div class="references">
+    References for the curious mind:
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/beginPath"><code>beginPath</code></a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc"><code>arc</code></a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fill"><code>fill</code></a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha"><code>globalAlpha</code></a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"><code>requestAnimationFrame</code></a></li>
+    </ul>
+  </div>
+  <p class="snapshot">Here's where we've gotten: <a href="https://jsfiddle.net/x75ut61o/155/">https://jsfiddle.net/x75ut61o/155/</a></p>
+</section>
+
+<section>
   <h2>Week 5 - Dec 14, 2017</h2>
   <p class="snapshot">Here's where we've left off: <a href="https://jsfiddle.net/x75ut61o/126/">https://jsfiddle.net/x75ut61o/126/</a></p>
   <p>We'll add some mouse interactivity! We'll cover a lot of ground this week, so use your time wisely!</p>
