@@ -7,6 +7,6 @@ layout: base
 </header>
 
 <section>
-  <h2>Week {{ page.week }}: {{ page.title }} &mdash; {{ page.date | date: "%b %-d, %Y" }}</h2>
+  <h2><a href="{{ page.url }}">Week {{ page.week }}: {{ page.title }} &mdash; {{ page.date | date: "%b %-d, %Y" }}</a></h2>
   {{ content }}
 </section>
