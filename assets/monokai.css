@@ -1,4 +1,5 @@
 /* Downloaded from http://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html */
+/* @todo: apply colours from https://github.com/jneen/rouge/blob/master/lib/rouge/themes/monokai_sublime.rb */
 .highlight pre { background-color: #272822; }
 .highlight .hll { background-color: #272822; }
 .highlight .c { color: #75715e } /* Comment */
