@@ -48,27 +48,40 @@ section {
   margin-bottom: 4rem;
 }
 
-p, pre, div.references, div.snapshot {
+pre {
+  font-size: 1.25rem;
+  padding: 0.5em;
+}
+
+p, pre, ul, .panel {
   margin-top: 1.5rem;
 }
 
-.snapshot {
-  border: 1px solid rgba(249, 38, 114, .3);
-  background: rgba(249, 38, 114, .2);
+.panel {
+  border: 1px solid;
   padding: 1em;
   border-radius: 1em;
+}
+
+.panel *:first-child {
+  margin-top: 0;
+}
+
+.panel *:last-child {
+  margin-bottom: 0;
+}
+
+.snapshot {
+  border-color: rgba(249, 38, 114, .3);
+  background: rgba(249, 38, 114, .2);
 }
 
 .experiments {
-  border: 1px solid rgba(230, 219, 116, .3);
+  border-color: rgba(230, 219, 116, .3);
   background: rgba(230, 219, 116, .2);
-  padding: 1em;
-  border-radius: 1em;
 }
 
 .references {
-  border: 1px solid rgba(174, 129, 255, .3);
+  border-color: rgba(174, 129, 255, .3);
   background: rgba(174, 129, 255, .2);
-  padding: 1em;
-  border-radius: 1em;
 }
