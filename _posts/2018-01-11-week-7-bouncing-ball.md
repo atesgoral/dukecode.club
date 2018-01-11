@@ -29,3 +29,22 @@ function paint(t) {
   drawCircle(ballX, ballY, 10, 'white');
 }
 ```
+
+Now, we want the ball to have a velocity and start moving around by itself. Define two new variables for the x and y components of the velocity:
+
+```js
+var ballVelX = 2;
+var ballVelY = 1;
+```
+
+In each frame, we will add the ball's velocity to its position to move it. Inside the `paint()` function (note: this it not necessarily the best place to put this, but it will do for now) add these lines right after drawing the ball:
+
+```js
+  ballX += ballVelX;
+  ballY += ballVelY;
+```
+
+You should now see the ball start slowly moving towards the bottom right, 2 pixels to the right and 1 pixel to the bottom each frame (60 times a second.)
+
+Here's a check point if you got lost: <https://jsfiddle.net/x75ut61o/219/>
+{: .panel .snapshot }
