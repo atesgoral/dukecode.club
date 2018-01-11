@@ -3,7 +3,7 @@ title: "Bouncing Ball"
 week: 7
 ---
 
-This week we'll make a ball bounce around the screen, using some simply physics (position, velocity.)
+This week we'll start working on getting a ball bounce around the screen, using some simply physics (position, velocity.)
 
 Let's start with this setup: <https://jsfiddle.net/x75ut61o/218/>
 {: .panel .snapshot }
