@@ -19,7 +19,7 @@ And in the `paint()` function, change the line where we draw the ball to use the
 
 ```js
 function paint(t) {
-	requestAnimationFrame(paint);
+  requestAnimationFrame(paint);
 
   ctx.fillStyle = 'black';
   ctx.globalAlpha = 0.1;
