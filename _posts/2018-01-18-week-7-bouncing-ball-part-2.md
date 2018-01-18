@@ -26,7 +26,7 @@ The next bit will be a bit more complicated. Add the following bit of code right
 
 ```js
   if (ballX >= c.width - BALL_RADIUS) {
-  	ballVelX = -ballVelX;
+    ballVelX = -ballVelX;
     ballX = (c.width - BALL_RADIUS) * 2 - ballX;
   }
 ```
@@ -37,18 +37,18 @@ And to make the ball bounce off all edges, this is the full code that you'll hav
 
 ```js
   if (ballX >= c.width - BALL_RADIUS) {
-  	ballVelX = -ballVelX;
+    ballVelX = -ballVelX;
     ballX = (c.width - BALL_RADIUS) * 2 - ballX;
   } else if (ballX < BALL_RADIUS) {
-  	ballVelX = -ballVelX;
+    ballVelX = -ballVelX;
     ballX = BALL_RADIUS * 2 - ballX;
   }
 
   if (ballY >= c.height - BALL_RADIUS) {
-  	ballVelY = -ballVelY;
+    ballVelY = -ballVelY;
     ballY = (c.height - BALL_RADIUS) * 2 - ballY;
   } else if (ballY < BALL_RADIUS) {
-  	ballVelY = -ballVelY;
+    ballVelY = -ballVelY;
     ballY = BALL_RADIUS * 2 - ballY;
   }
 ```
