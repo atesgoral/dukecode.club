@@ -1,5 +1,5 @@
 ---
-title: "Bouncing Ball"
+title: "Bouncing Ball - Part 1"
 week: 7
 ---
 
@@ -46,5 +46,5 @@ In each frame, we will add the ball's velocity to its position to move it. Insid
 
 You should now see the ball start slowly moving towards the bottom right, 2 pixels to the right and 1 pixel to the bottom each frame (60 times a second.)
 
-Here's a check point if you got lost: <https://jsfiddle.net/x75ut61o/219/>
+Here's where we've gotten: <https://jsfiddle.net/x75ut61o/219/>
 {: .panel .snapshot }
