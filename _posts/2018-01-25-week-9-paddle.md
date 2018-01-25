@@ -59,10 +59,10 @@ First, let's make a small tweak to the existing code. Add the following line rig
 
 ```js
   if (ballY >= bottomEdge) { // here
-  	ballVelY = -ballVelY;
+    ballVelY = -ballVelY;
     ballY = bottomEdge * 2 - ballY; // and here
   } else if (ballY < BALL_RADIUS) {
-  	ballVelY = -ballVelY;
+    ballVelY = -ballVelY;
     ballY = BALL_RADIUS * 2 - ballY;
   }
 ```
