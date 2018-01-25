@@ -28,7 +28,7 @@ And to draw the paddle, let's draw an orange rectangle:
 ```js
   ctx.fillStyle = 'orange';
   ctx.fillRect(
-  	paddleX,
+    paddleX,
     paddleY,
     PADDLE_WIDTH,
     PADDLE_HEIGHT
@@ -39,9 +39,9 @@ If you try this, you'll see that the paddle goes off the screen when you're too 
 
 ```js
   if (paddleX < 0) {
-  	paddleX = 0;
+    paddleX = 0;
   } else if (paddleX > c.width - PADDLE_WIDTH) {
-  	paddleX = c.width - PADDLE_WIDTH;
+    paddleX = c.width - PADDLE_WIDTH;
   }
 ```
 
@@ -52,7 +52,7 @@ We'll now have to add collision detection to make the ball bounce off the top of
 First, let's make a small tweak to the existing code. Add the following line right before our existing edge collision check code:
 
 ```js
-	var bottomEdge = c.height - BALL_RADIUS;
+  var bottomEdge = c.height - BALL_RADIUS;
 ```
 
  And also change the bottom edge collision check to use this new variable:
@@ -71,7 +71,7 @@ So far nothing new should happen because we didn't account for the paddle yet. L
 
 ```js
   if (ballX >= paddleX && ballX < paddleX + PADDLE_WIDTH) {
-  	bottomEdge = paddleY - BALL_RADIUS;
+    bottomEdge = paddleY - BALL_RADIUS;
   }
 ```
 
