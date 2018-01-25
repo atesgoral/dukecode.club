@@ -81,7 +81,23 @@ What we're saying with this is:
 
 In other words, if the ball is between the left and right edges of the paddle, the ball may hit the paddle instead of hitting the bottom edge.
 
+As a final tweak, let's remove the trails the ball and the paddle leave behind. We had added that in earlier to see the path the ball was taking better. Remove the lines where we change the `globalAlpha` of the canvas context (`ctx`):
+
+```js
+  ctx.fillStyle = 'black';
+  ctx.globalAlpha = 0.1; // remove this!
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.globalAlpha = 1; // remove this!
+```
+
 Now we have a paddle and ball, but it's not a real game until we start adding some state to the game like the start of the game, losing a ball, restarting. We'll start tackling this next week!
+
+<div markdown="1">
+References for the curious mind:
+
+* [Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
+</div>
+{: .panel .references }
 
 Here's where we've gotten: <https://jsfiddle.net/x75ut61o/235/>
 {: .panel .snapshot }

@@ -88,4 +88,3 @@ References for the curious mind:
 * [HSL and HSV](https://en.wikipedia.org/wiki/HSL_and_HSV)
 </div>
 {: .panel .references }
-

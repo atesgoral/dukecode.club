@@ -57,5 +57,3 @@ I've simplified some of the expression and therefore the code looks hard to unde
 
 Here's where we've gotten: <https://jsfiddle.net/x75ut61o/228/>
 {: .panel .snapshot }
-
-
