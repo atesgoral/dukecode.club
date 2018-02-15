@@ -97,7 +97,7 @@ Add the following right after incrementing `frameCount`:
 
 ```js
   if (state === 'LOSS' && frameCount === LOSS_DURATION * 60) {
-  	state = 'RESTING';
+    state = 'RESTING';
   }
 ```
 
