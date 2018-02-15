@@ -23,11 +23,11 @@ So far, we've been bouncing the ball off whenever it hit something at the bottom
 And now, when the ball's y coordinate is on or beyond `bottomEdge`, and the ball was above the paddle, we can set the game state to `'LOSS'`. Where we have the `if (ballY >= bottomEdge)` check, change the block to read like this:
 
 ```js
-    	if (isAbovePaddle) {
+      if (isAbovePaddle) {
         ballVelY = -ballVelY;
         ballY = bottomEdge * 2 - ballY;
       } else {
-				state = 'LOSS';
+        state = 'LOSS';
       }
 ```
 
