@@ -54,5 +54,54 @@ Where we draw the paddle, let's add the following conditional to not draw the pa
   }
 ```
 
-Here's where we've gotten: <https://jsfiddle.net/atesgoral/x75ut61o/261/>
+Here's a snapshot of where we are: <https://jsfiddle.net/atesgoral/x75ut61o/261/>
+{: .panel .snapshot }
+
+Next, let's wait for about 3 seconds before putting the game back into the `'RESTING'` state. For this, we can count the number of frames we're rendering. Since we're rendering at most 60 frames per second, we know that it will take 60 x 3 frames to wait 3 seconds. Let's start by defining a new variable:
+
+```js
+var LOSS_DURATION = 3;
+```
+
+(Put this where we define all the game-wide tweaking parameters.)
+
+Now, in order to count the number of frames we've spent in the `'LOSS'` state, we can define a new variable to count the number of frames we're rendering. Define a new game variable (put this below where we define the `state` variable):
+
+```js
+var frameCount = 0;
+```
+
+And let's increment this variable each frame. Add this line at the beginning of the `paint()` function:
+
+```js
+  frameCount = frameCount + 1;
+```
+
+Now, we're counting frames.
+
+But to know the number of frames we've rendered since an given an event in the game, we should reset this counter back to 0 when that event occurs. Where we set the game state to `'LOSS'`, reset `frameCount` to 0:
+
+```js
+      if (isAbovePaddle) {
+        ballVelY = -ballVelY;
+        ballY = bottomEdge * 2 - ballY;
+      } else {
+        state = 'LOSS';
+        frameCount = 0;
+      }
+```
+
+And finally, we need to add a check to see if the frameCount has reached `LOSS_DURATION`. In other words, whether we've rendered 3 seconds worth of frames.
+
+Add the following right after incrementing `frameCount`:
+
+```js
+  if (state === 'LOSS' && frameCount === LOSS_DURATION * 60) {
+  	state = 'RESTING';
+  }
+```
+
+This is saying: If we're in the `'LOSS'` state and if we've rendered `LOSS_DURATION` (the number of seconds to wait) x 60 (the number of frames we render per second), then put the game back into the `'RESTING'` state.
+
+Here's where we've gotten: <https://jsfiddle.net/atesgoral/x75ut61o/270/>
 {: .panel .snapshot }
