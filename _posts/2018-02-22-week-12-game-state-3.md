@@ -71,12 +71,12 @@ Then, where we used to just paint a black rectangle over the screen each frame, 
 
 ```js
   if (state === 'LOSS') {
-  	var elapsed = frameCount / 60;
-  	var flash = (elapsed % LOSS_FLASH_INTERVAL) / LOSS_FLASH_INTERVAL;
+    var elapsed = frameCount / 60;
+    var flash = (elapsed % LOSS_FLASH_INTERVAL) / LOSS_FLASH_INTERVAL;
     var lightness = flash * 50;
-  	ctx.fillStyle = hsl(0, 100, lightness);
+    ctx.fillStyle = hsl(0, 100, lightness);
   } else {
-	  ctx.fillStyle = 'black';
+    ctx.fillStyle = 'black';
   }
 ```
 
