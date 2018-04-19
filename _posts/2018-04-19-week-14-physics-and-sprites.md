@@ -22,3 +22,6 @@ Proper physics, boring graphics: <https://jsfiddle.net/atesgoral/x75ut61o/1368/>
 {: .panel .snapshot }
 
 As you can see, we're still rendering borig, solid-colour rectangles, because I didn't want to skip to far ahead. You will notice that our ball has now become a square. Because sprites are always rectangular (there's no such thing as a circular sprite). Our ball will look round when we change this white square into an image of a circular object!
+
+Here's where we've gotten: <https://jsfiddle.net/atesgoral/x75ut61o/1378/>
+{: .panel .snapshot }
